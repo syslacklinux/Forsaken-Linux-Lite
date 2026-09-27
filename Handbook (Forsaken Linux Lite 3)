@@ -1,0 +1,113 @@
+1 Download the iso https://alpinelinux.org/downloads/ Select Any Variants you like
+  Standard
+  Forsaken Linux Lite as it was intended. Just enough to get you started. Network connection is required
+
+  Extended
+  Most common used packages included. Suitable for routers and servers. Runs from RAM. Includes AMD and Intel microcode updates. 
+
+  Netboot
+  Kernel, initramfs and modloop for netboot.
+
+  Raspberry Pi
+  First generation Pis including Zero/W (armhf). Pi 2 to Pi 3+ generations (armv7). Pi 3 to Pi 5 generations (aarch64).
+
+  Mini root filesystem
+  Minimal root filesystem. For use in containers and minimal chroots.
+
+  Virtual
+  Similar to standard. Slimmed down kernel. Optimized for virtual systems. 
+
+  Generic U-Boot
+  Has default LTS kernel. Includes the U-Boot bootloader. Tarball. 
+
+  Xen
+  Built-in support for Xen Hypervisor. Includes packages targetted at Xen usage. Use for Xen Dom0. 
+
+Usually Standard is the Best Choice
+
+2 Flash the USB Stick or Other Installation Media Like CD DVD
+3 Boot to alpine linux media then login as root then type setup-alpine then setup alpine linux first when finished type reboot
+4 After install login as root first
+5 run apk add nano 
+  then nano /etc/os-release
+  change
+
+NAME="Alpine Linux"
+ID=alpine
+VERSION_ID="3.24.2"
+PRETTY_NAME="Alpine Linux v3.24"
+HOME_URL="https://alpinelinux.org"
+BUG_REPORT_URL="https://gitlab.alpinelinux.org/alpine/aports/-/issues"
+
+To
+
+NAME="Forsaken Linux Lite"
+ID=forsaken
+VERSION_ID="3 (at the speed of light)
+PRETTY_NAME="Forsaken Linux Lite 3 (at the speed of light)"
+HOME_URL="https://github.com/syslacklinux/Forsaken-Linux-Lite"
+BUG_REPORT_URL="https://github.com/syslacklinux/Forsaken-Linux/issues"
+
+AFter This CTRL X Y Enter
+
+Then nano /etc/issue
+
+Change 
+
+Welcome to Alpine Linux 3.24
+Kernel \r on \m (\l)
+
+To
+!etc/os-release
+!etc/issue
+Welcome to \s \r \m (\l)
+
+After Done CTRL X Y Enter
+
+Then run nano /etc/apk/protected_paths.d/custom.list
+then add this
+!etc/os-release
+!etc/issue
+
+After done exit nano by ctrl x y enter
+
+6 Run rm /etc/motd
+
+7 Bootloader 
+
+For Legacy BIOS
+Check and Remount /bootOn many Alpine Linux systems, the boot partition is mounted as read-only by default. Run this command to allow changes
+mount -o remount,rw /boot
+
+nano /boot/extlinux.conf
+Then Change 
+MENU TITLE Alpine/Linux Boot Menu
+To
+MENU TITLE Forsaken Linux Lite Boot Menu
+Change
+MENU AUTOBOOT Alpine will be booted automatically in # seconds.
+To
+MENU AUTOBOOT Forsaken Linux Lite will be booted automatically in # seconds.
+On APPEND root Remove quiet
+After Done Exit Nano WIth CTRL X Y Enter
+
+If you are running a standard disk install, you are done.However, 
+if you are running a diskless mode system (running completely from RAM), you must save the changes to your local backup file so they survive a reboot
+lbu commit -d
+
+Remount /boot to Read-Only
+mount -o remount,ro /boot
+
+For UEFI
+run nano /etc/default/grub
+Then change 
+GRUB_DISABLE_RECOVERY=true
+To
+GRUB_DISABLE_RECOVERY=false
+Then Remove quiet on GRUB_CMDLINE_LINUX_DEFAULT
+Then add GRUB_DISTRIBUTOR="Forsaken Linux Lite"
+Then after this done ctrl x y enter then grub-mkconfig -o /boot/grub/grub.cfg
+If you are on a diskless (RAM) installation, make sure to commit the changes to your local backup
+lbu commit -d
+
+8 Reboot the system
