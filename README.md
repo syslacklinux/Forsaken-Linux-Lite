@@ -5,15 +5,24 @@ Forsaken Linux Lite is a lightweight version of the Forsaken Linux distribution 
 No ISO Needed!
 
 Supported Architectures
-aarch64
-armv7
-armhf
-loongarch64
-ppc64le
-riscv64
-s390x
-x86_32
-x86_64
+
+-aarch64
+
+-armv7
+
+-armhf
+
+-loongarch64
+
+-ppc64le
+
+-riscv64
+
+-s390x
+
+-x86_32
+
+-x86_64
 
 Regular Version
 https://github.com/syslacklinux/Forsaken-Linux
