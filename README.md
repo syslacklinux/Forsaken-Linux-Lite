@@ -26,5 +26,23 @@ Supported Architectures
 
 -x86_64
 
+Unlike the main Forsaken Linux, which is based on Arch Linux, Forsaken Linux Lite is based on Alpine Linux because Alpine offers:
+
+Small system footprint
+Low RAM usage
+Fast boot times
+Excellent multi-architecture support
+OpenRC instead of systemd
+musl libc instead of glibc
+Simple APK package manager
+
+This makes it ideal for:
+
+Old computers
+Embedded systems
+Single-board computers
+Servers
+Unsupported architectures
+
 Regular Version
 https://github.com/syslacklinux/Forsaken-Linux
