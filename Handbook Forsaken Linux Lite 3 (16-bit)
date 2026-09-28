@@ -1,0 +1,31 @@
+Build ELKS images On a modern Linux machine git clone https://github.com/jbruchon/elks.git cd elks make
+
+Write floppy image
+
+Insert a real floppy disk.
+
+Use dd to write the image:
+
+sudo dd if=elks.img of=/dev/fd0 bs=512
+
+Boot hardware from floppy
+
+Insert the floppy into your vintage PC.
+
+Power on; ELKS should boot into its shell.
+
+Login as root (no password).
+
+Install to HDD
+
+Partition the HDD using DOS tools or ELKS utilities.
+
+Format with FAT or MINIX (mkfs.minix).
+
+Copy ELKS system files from floppy to HDD.
+
+Adjust boot sector or use a bootloader (ELKS includes simple boot code).
+
+Reboot with HDD as primary boot device.
+
+Login as root then vi /etc/issue Then Change ELKS 0.7.0 To Forsaken Linux Lite 3 (at the speed of light) (16-bit) then esc then :wq
