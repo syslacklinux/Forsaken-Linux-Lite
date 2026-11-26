@@ -28,4 +28,4 @@ Adjust boot sector or use a bootloader (ELKS includes simple boot code).
 
 Reboot with HDD as primary boot device.
 
-Login as root then vi /etc/issue Then Change ELKS 0.7.0 To Forsaken Linux Lite 3 (at the speed of light) (16-bit) then esc then :wq
+Login as root then vi /etc/issue Then Change ELKS Version Name Example 0.9.2 To Forsaken Linux Lite 4 (midori) (16-bit) then esc then :wq
